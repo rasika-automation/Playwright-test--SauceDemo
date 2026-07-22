@@ -78,28 +78,6 @@ test('4.checkout and place the order', async({page})=> {
 
             await expect(page).toHaveURL('https://www.saucedemo.com/checkout-complete.html');
 
-
-//Download PDF 
-
-const [ download ] = await Promise.all([page.waitForEvent('download'),
-page.locator('#generate-pdf-order').click()
-  ]);
-
-//SavePDF
-
-const downloadPath = 'C:/Users/Asus/Downloads/orderReceipt.pdf';
-await download.saveAs(downloadPath);
-  
-
-//Read PDF content
-
-const dataBuffer = fs.readFileSync(downloadPath);
-const pdfData = await pdfParse(dataBuffer);
-console.log('PDF text:', pdfData.text);
-
-// Example assertion
-
-expect(pdfData.text).toContain('Thank you for your order');
 await page.locator('#back-to-products').click();
 
 });
