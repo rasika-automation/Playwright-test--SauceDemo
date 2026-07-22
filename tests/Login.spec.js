@@ -105,7 +105,7 @@ await page.locator('#back-to-products').click();
 });
 
 
-test.only('5.Logout from the saucedemo', async({page})=> {
+test('5.Logout from the saucedemo', async({page})=> {
 
     await page.goto('https://www.saucedemo.com/');
 
