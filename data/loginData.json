@@ -1,0 +1,17 @@
+[
+  {
+    "testCase": "Valid Login",
+    "username": "standard_user",
+    "password": "secret_sauce",
+    "expectedResult": "Login Successful"
+  },
+ 
+  {
+    "testCase": "Blank Username and Password",
+    "username": "",
+    "password": "",
+    "expectedResult": "Login Failed",
+        "expectedError": "Epic sadface: Username is required"
+
+  }
+]
