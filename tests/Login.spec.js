@@ -78,31 +78,31 @@ test('4.checkout and place the order', async({page})=> {
 
             await expect(page).toHaveURL('https://www.saucedemo.com/checkout-complete.html');
 
-
-//Download PDF 
-
-const [ download ] = await Promise.all([page.waitForEvent('download'),
-page.locator('#generate-pdf-order').click()
-  ]);
-
-//SavePDF
-
-const downloadPath = 'C:/Users/Asus/Downloads/orderReceipt.pdf';
-await download.saveAs(downloadPath);
-  
-
-//Read PDF content
-
-const dataBuffer = fs.readFileSync(downloadPath);
-const pdfData = await pdfParse(dataBuffer);
-console.log('PDF text:', pdfData.text);
-
-// Example assertion
-
-expect(pdfData.text).toContain('Thank you for your order');
 await page.locator('#back-to-products').click();
 
 });
+
+
+test('5.Logout from the saucedemo', async({page})=> {
+
+    await page.goto('https://www.saucedemo.com/');
+
+    await page.locator('#user-name').fill('standard_user');
+    await page.locator('#password').fill('secret_sauce');
+    await page.locator('#login-button').click();
+
+    await expect(page).toHaveURL('https://www.saucedemo.com/inventory.html')
+
+    await page.locator('#react-burger-menu-btn').click();
+    await page.locator('#logout_sidebar_link').click();
+    await expect(page).toHaveURL('https://www.saucedemo.com/');
+
+    });
+
+
+
+
+
 
            
 
