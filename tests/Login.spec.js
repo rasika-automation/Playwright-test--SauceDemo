@@ -8,7 +8,7 @@ import pdfParse from 'pdf-parse';
 
 //Scenario 1:- Goto the saucedemo.com and login the valid user and password and verify the URL after Login.
 
-test('1.Login test Sauce demo', async({page})=> {
+test('@Smoke 1.Login test Sauce demo', async({page})=> {
 
     await page.goto('https://www.saucedemo.com/');
 
