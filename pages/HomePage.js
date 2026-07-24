@@ -1,19 +1,26 @@
 class HomePage {
 
     constructor(page) {
-
         this.page = page;
 
-        this.menuBtn = '#react-burger-menu-btn';
-        this.logoutLink = '#logout_sidebar_link';
+        this.backpack = page.locator('#add-to-cart-sauce-labs-backpack');
+        this.cart = page.locator('#shopping_cart_container');
+        this.menu = page.locator('#react-burger-menu-btn');
+        this.logout = page.locator('#logout_sidebar_link');
     }
 
-    async logout() {
+    async addBackpackToCart() {
+        await this.backpack.click();
+    }
 
-        await this.page.click(this.menuBtn);
+    async openCart() {
+        await this.cart.click();
+    }
 
-        await this.page.click(this.logoutLink);
+    async logoutUser() {
+        await this.menu.click();
+        await this.logout.click();
     }
 }
 
-export default HomePage;
+module.exports = HomePage;
